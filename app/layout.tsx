@@ -33,7 +33,7 @@ export default function RootLayout({
             <header className="h-24">
               <nav className="flex fixed w-full top-0 h-24 p-4 justify-between">
                 <Image
-                  src="logo_PHC.png"
+                  src="logo_PHC.svg"
                   alt="Polkadot Hungary logo"
                   width={270}
                   height={120}
