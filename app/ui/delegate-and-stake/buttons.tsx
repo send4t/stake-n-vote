@@ -49,7 +49,7 @@ export function DelegateStakeButtons() {
         isLoading={isConnecting}
       >
         {/* @ts-ignore */}
-        Stake {activeChain?.tokenSymbol}
+        {activeChain?.tokenSymbol} Stake-elés
       </Button>
       <Button
         variant="bordered"
@@ -59,7 +59,7 @@ export function DelegateStakeButtons() {
         isLoading={isConnecting}
       >
         {/* @ts-ignore */}
-        Delegate {activeChain?.tokenSymbol} Votes
+        {activeChain?.tokenSymbol} Szavazat delegálás
       </Button>
       {isDelegatingOpen && (
         <ModalDelegate

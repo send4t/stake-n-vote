@@ -5,16 +5,16 @@ export const isDev = process.env.NODE_ENV === "development";
 
 export const CACHE_INVALIDATION_TIME = 60 * 30; // in seconds, equals 30min
 
-// Kusamarian Delegators
+// Polkadot Hungary delegator
 export const POLKADOT_DELEGATOR =
-  "15KHTWdJyzyxaQbBNRmQN89KmFr1jPXXsPHM5Rxvd1Tkb2XZ";
+  "16DNbAdyy6QsTPdDDHL5gt7FaeAQ1UioJA6Pj7aUGJERveFd";
 
 export const KUSAMA_DELEGATOR =
   "JHTfbt39EL1CcbKteN6hG5L5pWo9XWi9XFiyuS9q24cAc8u";
 
-// Kusamarian Validators
+// Polkadot Hungary Validators
 export const POLKADOT_VALIDATOR =
-  "13zRKESAgaKG4xyYrZnAA4Qdu1iVVMsrdiAnhnnnd4CB6TpU";
+  "13UVJyLnbVp8c4FQeiGSDRBkUFoD7ZUQHvkP5rGdfJfgrpCa";
 
 export const KUSAMA_VALIDATOR =
   "FZjqDWyTA4iP5nUfdYCurwVBz15bj8u1bH3wA5PYmP9fE3j";
@@ -38,9 +38,9 @@ export const CHAIN_CONFIG: {
     maxNominators: 16,
     delegator: POLKADOT_DELEGATOR,
     validator: POLKADOT_VALIDATOR,
-    poolId: 12, //talisman pool,
+    poolId: 219, //talisman pool,
     validator_set: [
-      "13zRKESAgaKG4xyYrZnAA4Qdu1iVVMsrdiAnhnnnd4CB6TpU",
+      "13UVJyLnbVp8c4FQeiGSDRBkUFoD7ZUQHvkP5rGdfJfgrpCa",
       "15wepZh1jWNqxBjsgErm8HmYiE21n79c5krQJeTsYAjHddeM",
       "152QidDC4QrtMCyRGiQmvrNyjntvMg2XouCSdoPSeqUNTvsq",
       "14AakQ4jAmr2ytcrhfmaiHMpj5F9cR6wK1jRrdfC3N1oTbUz",

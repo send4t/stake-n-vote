@@ -6,7 +6,7 @@ export function ChainButton({ onClick }: { onClick: () => void }) {
       onClick={onClick}
       className="bg-white text-black rounded-full px-4 py-2"
     >
-      connect
+      csatlakozás
     </button>
   );
 }

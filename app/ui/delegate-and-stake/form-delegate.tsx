@@ -34,7 +34,7 @@ export type State = {
 export function submitDelegation(prevState: State, formData: FormData) {
   return {
     errors: {
-      status: ["Delegation Failed!"],
+      status: ["Delegálás sikertelen"],
     },
     message: null,
   };
@@ -101,37 +101,37 @@ export default function FormDelegate() {
     {
       value: 0,
       label: "0.1x",
-      description: "No lockup",
+      description: "Lezárás nélkül",
     },
     {
       value: 1,
       label: "1x",
-      description: "Locked for 7 days",
+      description: "7 napig lezárva",
     },
     {
       value: 2,
       label: "2x",
-      description: "Locked for 14 days",
+      description: "14 napig lezárva",
     },
     {
       value: 3,
       label: "3x",
-      description: "Locked for 28 days",
+      description: "28 napig lezárva",
     },
     {
       value: 4,
       label: "4x",
-      description: "Locked for 56 days",
+      description: "56 napig lezárva",
     },
     {
       value: 5,
       label: "5x",
-      description: "Locked for 112 days",
+      description: "112 napig lezárva",
     },
     {
       value: 6,
       label: "6x",
-      description: "Locked for 224 days",
+      description: "224 napig lezárva",
     },
   ];
 
@@ -164,7 +164,7 @@ export default function FormDelegate() {
   };
 
   const trackOptionsWithAll = [
-    { id: ALL_TRACKS_ID, name: "All Tracks" },
+    { id: ALL_TRACKS_ID, name: "Összes témakör" },
     ...(trackOptions || []),
   ];
 
@@ -176,16 +176,16 @@ export default function FormDelegate() {
           onValueChange={setIsAllSelected}
           color="danger"
         >
-          All Tracks
+          Összes téma
         </Switch>
         {!isAllSelected && (
           <Select
             label="Tracks"
-            placeholder="Select Tracks"
+            placeholder="Válaszd ki a témakört"
             selectionMode="multiple"
             size="sm"
             classNames={{ description: "text-foreground-600" }}
-            description="Select the tracks you want to delegate"
+            description="Válaszd ki milyen témakörben delegálsz"
             selectedKeys={tracks}
             // @ts-ignore
             onSelectionChange={handleSelectionChange}
@@ -206,8 +206,8 @@ export default function FormDelegate() {
           <Input
             size="sm"
             type="number"
-            label="Amount"
-            placeholder="Enter Delegation Amount"
+            label="Összeg"
+            placeholder="Írd be a delegálni kívánt összeget"
             classNames={{ description: "text-foreground-600" }}
             value={amount.toString()}
             onChange={(e) => setAmount(parseInt(e.target.value))}
@@ -229,13 +229,13 @@ export default function FormDelegate() {
             size="sm"
             isDisabled={!isAccountBalanceSuccess}
           >
-            Delegate Max
+            Maximum delegálás
           </Button>
         </div>
       </div>
       <div className="flex flex-col gap-6 w-full max-w-full">
         <Slider
-          label="Conviction"
+          label="Nyomaték"
           color="danger"
           step={1}
           maxValue={6}
@@ -259,7 +259,7 @@ export default function FormDelegate() {
           onClick={delegateToTheKus}
           isDisabled={!isAccountBalanceSuccess}
         >
-          Delegate {effectiveVotes} {effectiveVotes !== 1 ? "Votes" : "Vote"}
+          Delegálok {effectiveVotes} {effectiveVotes !== 1 ? "szavazatot" : "szavazatot"}
         </Button>
       </div>
     </form>

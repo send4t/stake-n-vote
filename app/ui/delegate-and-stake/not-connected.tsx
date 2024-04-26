@@ -1,22 +1,22 @@
 export function NotConnected() {
   return (
     <p>
-      Please click Connect in the top right corner or download the
+       Kattints a csatlakozásra a jobb felső sarokban vagy töltsd le
       <br />
       <a
         className="underline"
         href="https://www.talisman.xyz/download"
         target="_blank"
       >
-        Talisman Browser Extension
+        a Talisman bővítményt
       </a>{" "}
-      (Desktop) <br />
-      or <br />
+      (asztali gépre) <br />
+      vagy<br />
       <a className="underline" href="https://novawallet.io/" target="_blank">
         {" "}
         Nova Wallet
       </a>{" "}
-      (Mobile) and then connect!
+      (mobilra) és utána csatlakozz!
     </p>
   );
 }

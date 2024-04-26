@@ -92,7 +92,7 @@ export const ConnectButton: FC<ConnectButtonProps> = ({ size }) => {
               "connecting"
             ) : (
               <>
-                Connect Wallet
+                Pénztárca csatlakoztatása
                 <ChevronDown size={16} />
               </>
             )}
@@ -127,7 +127,7 @@ export const ConnectButton: FC<ConnectButtonProps> = ({ size }) => {
                         <p>{w.name}</p>
                         <ArrowUpRight />
                       </div>
-                      <p>Not installed</p>
+                      <p>Nincs telepítve</p>
                     </Link>
                   </DropdownItem>
                 )
@@ -225,7 +225,7 @@ export const ConnectButton: FC<ConnectButtonProps> = ({ size }) => {
               }}
               className="hover:bg-transparent data-[hover=true]:border-white hover:border-white"
             >
-              Logout
+              Kijelentkezés
             </DropdownItem>
           </DropdownSection>
         </DropdownMenu>

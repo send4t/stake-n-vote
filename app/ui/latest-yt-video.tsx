@@ -27,7 +27,7 @@ const LatestYtVideo: React.FC = () => {
       {video && (
         <div className="w-full md:w-3/4 lg:w-1/2 mb-8">
           <h2 className="text-lg mb-2 mt-8 text-center">
-            Here&apos;s the latest on Polkadot
+           Itt a legfrissebb Polkadot videó
           </h2>
           <LazyYoutubeEmbed
             previewImageUrl={video?.thumbnails?.maxres?.url}

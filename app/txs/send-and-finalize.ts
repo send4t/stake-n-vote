@@ -25,13 +25,13 @@ export type ToastType = {
 };
 
 export const DEFAULT_TOAST = {
-  title: "Processing Transaction",
+  title: "Tranzakció feldolgozása",
   messages: {
-    signing: "1/3 Awaiting your signature",
-    entering: "2/3 Waiting for transaction to enter block",
-    finalizing: "3/3 Waiting for block finalization",
-    success: "Transaction successful",
-    error: "Oh no!",
+    signing: "1/3 Aláírásra vár",
+    entering: "2/3 Várj amíg a tranzakciót felveszi egy blokk",
+    finalizing: "3/3 Blokk végelesítésre vár",
+    success: "Sikeres tranzakció",
+    error: "Óh jaj!",
   },
 };
 
@@ -46,7 +46,7 @@ export async function sendAndFinalize(
   if (!api || !signer || !address) {
     return {
       status: "error",
-      message: "Missing api, signer or address",
+      message: "Hiányzó API, aláíró vagy cím",
     };
   }
 
@@ -69,7 +69,7 @@ export async function sendAndFinalize(
 
   let res: SendAndFinalizeResult = {
     status: "error",
-    message: "Transaction failed",
+    message: "Sikertelen tranzakció",
   };
 
   try {
@@ -79,7 +79,7 @@ export async function sendAndFinalize(
         { signer },
         async (result) => {
           const { status, dispatchError, events = [], txHash } = result;
-          console.log("Transaction status:", status);
+          console.log("Tranzakció állapota", status);
           if (status.isReady) {
             if (toastId) {
               toast.loading(messages.entering, {
@@ -115,7 +115,7 @@ export async function sendAndFinalize(
 
                 res = {
                   status: "error",
-                  message: docs?.join(" ") || "Unknown error",
+                  message: docs?.join(" ") || "Ismeretlen hiba",
                 };
 
                 console.trace("dispatch error", decoded);
@@ -151,7 +151,7 @@ export async function sendAndFinalize(
 
               res = {
                 status: "success",
-                message: `Transaction successful`,
+                message: `Sikeres tranzakció`,
                 events,
                 txHash: txHash.toString(),
                 blockHeader,
@@ -174,7 +174,7 @@ export async function sendAndFinalize(
 
     res = {
       status: "error",
-      message: "Transaction failed",
+      message: "Tranzakció nem sikerült",
     };
 
     cb?.(res);

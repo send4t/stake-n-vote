@@ -112,9 +112,9 @@ export default function ModalStake(props: ModalPropType) {
             <ModalHeader className="flex flex-col gap-1">
               {activeAccount ? (
                 <>
-                  Stake {tokenSymbol} with Kus Validation{" "}
+                  Stake-elj {tokenSymbol} -ot a Polkadot Hungary-vel{" "}
                   <span className="text-xs text-gray-300">
-                    ({humanFreeBalance.toFixed(2)} {tokenSymbol} available)
+                    ({humanFreeBalance.toFixed(2)} {tokenSymbol} elérhető)
                   </span>
                 </>
               ) : (
@@ -194,12 +194,12 @@ export default function ModalStake(props: ModalPropType) {
               ) : (
                 <>
                   <p>
-                    Something went wrong{" "}
+                    Valami nem sikerült{" "}
                     <a
                       className="text-danger cursor-pointer"
                       onClick={() => router.refresh()}
                     >
-                      Try again
+                      Próbáld újra
                     </a>
                     .
                   </p>
@@ -207,7 +207,7 @@ export default function ModalStake(props: ModalPropType) {
               )}
               {showSupported && (
                 <div className="flex items-center justify-end text-xs h-5 text-gray-200">
-                  supported by{" "}
+                  támogatva {" "}
                   {activeChain === polkadotRelay && (
                     <a
                       className="pl-1"
@@ -280,9 +280,9 @@ function Success({
 
   return (
     <>
-      <p>Looks like you&apos;re already staking with The Kus!</p>
+      <p>Úgy látszik már &apos; a Polkadot Hungary-vel stake-elsz</p>
       <Button color="danger" onClick={goDelegate}>
-        Delegate voting power
+        Szavazati erő delegálása
       </Button>
     </>
   );
@@ -298,7 +298,7 @@ function NoFunds({
   return (
     <>
       <p>
-        Deposit {tokenSymbol} to your account or buy {tokenSymbol}
+        Küldj {tokenSymbol}-ot a tárcádba vagy vegyél {tokenSymbol}-ot
       </p>
       <div className="flex gap-2 items-center">
         <a href="https://global.transak.com/">
@@ -309,7 +309,7 @@ function NoFunds({
             height={50}
           />
         </a>{" "}
-        or
+        vagy
         <a href="https://banxa.com/">
           <Image
             src="banxa.svg"
@@ -405,11 +405,11 @@ function MaybeAddToPool({
       <div className="flex gap-2">
         <Input
           type="number"
-          label="Amount"
+          label="Mennyiség"
           placeholder={
             activeChain === kusamaRelay
-              ? `Enter staking amount > ${humanReadableMinNominatorBond} ${tokenSymbol}`
-              : `Enter staking amount`
+              ? `Írd be mennyit szeretnél stake-lni > ${humanReadableMinNominatorBond} ${tokenSymbol}`
+              : `Írd be mennyit szeretnél stake-lni`
           }
           endContent={
             <>
@@ -434,7 +434,7 @@ function MaybeAddToPool({
           variant="bordered"
           className="border-white h-12"
         >
-          Stake Max
+          Maximális stake
         </Button>
       </div>
       {amountSmallerThanMinNominatorBond && kusamaRelay ? (
@@ -453,7 +453,7 @@ function MaybeAddToPool({
               isDisabled={isDisabled}
               size="lg"
             >
-              Stake with Nomination Pool
+              Stake-elj a nomination pool-ban
             </Button>
           </Tooltip>
         </>
@@ -464,7 +464,7 @@ function MaybeAddToPool({
           isDisabled={isDisabled}
           size="lg"
         >
-          Stake with Kus Validation and friends
+          Stake-elek a Polkadot Hungary-vel
         </Button>
       )}
     </>

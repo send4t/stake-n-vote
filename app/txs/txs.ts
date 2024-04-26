@@ -39,7 +39,7 @@ export async function nominateTx(
     ...DEFAULT_TOAST,
     messages: {
       ...DEFAULT_TOAST.messages,
-      success: "Nomination successful",
+      success: "Sikeres nominálás",
     },
   });
   return res;
@@ -53,7 +53,7 @@ export async function bondAndNominateTx(
   amount: BN
 ) {
   const tx = api?.tx.utility.batch([
-    api?.tx.staking.bond(amount, "Staked"),
+    api?.tx.staking.bond(amount, "Stake-elve"),
     api?.tx.staking.nominate(targets),
   ]);
 

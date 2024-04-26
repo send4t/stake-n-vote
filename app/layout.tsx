@@ -15,9 +15,9 @@ import { ConnectButton } from "./ui/connect-button";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "The Kusamarian Staking and Delegating App",
-  description: "Stake your DOT and KSM with The Kusamarian",
-  metadataBase: new URL("https://thekus.xyz"),
+  title: "Polkadot Hungary egyszerű stake/nominálás",
+  description: "Stake-eld DOT tokened a Polkadot Hungary-vel",
+  metadataBase: new URL("https://polkadothungary.net"),
 };
 
 export default function RootLayout({
@@ -33,10 +33,10 @@ export default function RootLayout({
             <header className="h-24">
               <nav className="flex fixed w-full top-0 h-24 p-4 justify-between">
                 <Image
-                  src="kusamarian.png"
-                  alt="Kusamarian Logo"
-                  width={75}
-                  height={80}
+                  src="polkadotHU.png"
+                  alt="Polkadot Hungary logo"
+                  width={90}
+                  height={90}
                 />
                 <ConnectButton />
               </nav>
@@ -52,15 +52,6 @@ export default function RootLayout({
                 {" "}
                 <GithubIcon size={28} />
               </Link>
-
-              <Link
-                href="https://discord.gg/CRNDnguJXx
-                "
-                target="_blank"
-                className="pl-2"
-              >
-                <DiscordIcon size={32} />
-              </Link>
               <Link
                 href="https://www.youtube.com/channel/UCqNw3CEyOD-bjjYYaxVyG3Q
                 "
@@ -70,7 +61,7 @@ export default function RootLayout({
                 <Youtube size={32} />
               </Link>
               <Link
-                href="https://twitter.com/TheKusamarian
+                href="https://twitter.com/polkadothungary
                 "
                 target="_blank"
                 className="pl-2"
@@ -104,14 +95,14 @@ export default function RootLayout({
             }}
           />
         </Providers>
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-7RG8GF0LMC" />
+        <Script src="" />
         <Script id="google-analytics">
           {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
  
-          gtag('config', 'G-7RG8GF0LMC');
+          gtag('config', '');
         `}
         </Script>
       </body>

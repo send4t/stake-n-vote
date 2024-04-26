@@ -49,9 +49,9 @@ export default function ModalDelegate(props: ModalPropType) {
             <ModalHeader className="flex flex-col gap-1">
               {activeAccount ? (
                 <>
-                  Delegate Votes to The Kus {tokenSymbol} Delegate
+                  Delegálj szavazati erőt a Polkadot Hungary-nek {tokenSymbol} Delegálás
                   <span className="text-xs text-gray-300">
-                    ({humanFreeBalance.toFixed(2)} {tokenSymbol} available)
+                    ({humanFreeBalance.toFixed(2)} {tokenSymbol} elérhető)
                   </span>
                 </>
               ) : (
@@ -65,16 +65,15 @@ export default function ModalDelegate(props: ModalPropType) {
                 <>
                   <FormDelegate />
                   <p className="my-2 text-center text-xs">
-                    The Kus Delegate is directed by verified humans from The
-                    Kusamarian community <br />
+                    A Polkadot Hungary csapata aktívan részt vesz a Polkadot formálásában <br />
                     <a
                       className="underline"
-                      href="https://discord.gg/QumzjDyeY4"
+                      href="https://t.me/polkadothungary"
                       target="_blank"
                     >
-                      Join our Discord
+                      Csatlakozz a Telegram csatornánkhoz
                     </a>{" "}
-                    after you delegate!
+                    delegálás után!
                   </p>
                 </>
               )}

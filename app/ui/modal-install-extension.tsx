@@ -23,11 +23,11 @@ export function ModalInstallExtension(props: ModalPropType) {
         {(onClose) => (
           <>
             <ModalHeader className="flex flex-col gap-1">
-              Install a compatible wallet
+              Telepíts egy kompatibilis pénztárcát
             </ModalHeader>
             <ModalBody className="text-sm mb-4">
               <p>
-                Please click Connect in the top right corner or download the
+              Kattints a csatlakozásra a jobb felső sarokban vagy töltsd le
               </p>
               <p>
                 <a
@@ -35,9 +35,9 @@ export function ModalInstallExtension(props: ModalPropType) {
                   href="https://www.talisman.xyz/download"
                   target="_blank"
                 >
-                  Talisman Browser Extension
+                  a Talisman bővítményt
                 </a>{" "}
-                (Desktop) or <br />
+                (Asztali gépre) vagy <br />
                 <a
                   className="underline"
                   href="https://novawallet.io/"
@@ -46,9 +46,9 @@ export function ModalInstallExtension(props: ModalPropType) {
                   {" "}
                   Nova Wallet
                 </a>{" "}
-                (Mobile)
+                (mobil-ra)
               </p>
-              <p>allow this site access, and then connect!</p>
+              <p>adj engedélyt az oldalnak és csatlakozz</p>
             </ModalBody>
           </>
         )}
