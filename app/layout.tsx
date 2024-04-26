@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import Image from "next/image";
-
+import { Button, ButtonGroup } from "@nextui-org/button";
 import "@polkadot/api-augment";
 import { Providers } from "./providers";
 import { inter, notoSansMono, pt_mono } from "./fonts";
@@ -33,10 +33,10 @@ export default function RootLayout({
             <header className="h-24">
               <nav className="flex fixed w-full top-0 h-24 p-4 justify-between">
                 <Image
-                  src="polkadotHU.png"
+                  src="logo_PHC.png"
                   alt="Polkadot Hungary logo"
-                  width={90}
-                  height={90}
+                  width={270}
+                  height={120}
                 />
                 <ConnectButton />
               </nav>
@@ -45,7 +45,7 @@ export default function RootLayout({
               {children}
             </main>
             <footer className="fixed bottom-0 flex max-w-7xl mx-auto h-16 p-4 w-full text-xs items-center gap-2">
-              <Link
+              {/* <Link
                 href="https://github.com/TheKusamarian/stake-n-vote"
                 target="_blank"
               >
@@ -59,6 +59,14 @@ export default function RootLayout({
                 className="pl-2"
               >
                 <Youtube size={32} />
+               </Link> */}
+               <Link href="https://polkadothungary.net
+                ">
+              <Button variant="bordered"
+                        className={"border-2 border-white text-white  shadow-xl text-base py-6 rounded-xl hover:bg-white/10"}
+                        size="sm">
+                          Blog
+              </Button>
               </Link>
               <Link
                 href="https://twitter.com/polkadothungary

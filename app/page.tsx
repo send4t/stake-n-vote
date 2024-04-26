@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="h-full flex justify-center items-center w-full flex-col mb-10">
       <DelegateAndStake />
-      <LatestYtVideo />{" "}
+    {/*  <LatestYtVideo />{" "} //majd ha lesz youtube csatorna  */}
     </div>
   );
 }
