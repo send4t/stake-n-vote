@@ -5,6 +5,7 @@ import { Button, ButtonGroup } from "@nextui-org/button";
 import { useDisclosure } from "@nextui-org/modal";
 import ModalDelegate from "./modal-delegate";
 import ModalStake from "./modal-stake";
+import ModalCalc from "./modal-calculator"
 import { event } from "nextjs-google-analytics";
 import { useInkathon } from "@scio-labs/use-inkathon";
 import { useApp } from "@/app/providers/app-provider";
@@ -15,6 +16,8 @@ export function DelegateStakeButtons() {
     enableEffect();
   };
 
+  const { isOpen: isCalcOpen, onOpenChange: onCalcOpenChange } =
+  useDisclosure();
   const { isOpen: isStakingOpen, onOpenChange: onStakingOpenChange } =
     useDisclosure();
   const { isOpen: isDelegatingOpen, onOpenChange: onDelegatingOpenChange } =
@@ -35,6 +38,14 @@ export function DelegateStakeButtons() {
       label: "delegating modal opened",
     });
     activeAccount ? onDelegatingOpenChange() : openExtensionModal();
+  };
+
+  const handleCalcOpen = () => {
+    event("calc_open", {
+      category: "Modal",
+      label: "calc modal opened",
+    });
+    activeAccount ? onCalcOpenChange() : openExtensionModal();
   };
 
   return (
@@ -61,6 +72,24 @@ export function DelegateStakeButtons() {
         {/* @ts-ignore */}
         {activeChain?.tokenSymbol} Szavazat delegálás
       </Button>
+      <Button
+        variant="bordered"
+        className={
+          "border-2 border-white text-white w-full shadow-xl text-base py-6 rounded-xl hover:bg-white/10"
+        }
+        size="sm"
+        onClick={handleCalcOpen}
+        isLoading={isConnecting}
+      >
+        {/* @ts-ignore */}
+        {activeChain?.tokenSymbol} Staking Kalkulátor
+      </Button>
+      {isCalcOpen && (
+        <ModalCalc
+          isOpen={isCalcOpen}
+          onOpenChange={onCalcOpenChange}
+        />
+      )}
       {isDelegatingOpen && (
         <ModalDelegate
           isOpen={isDelegatingOpen}
