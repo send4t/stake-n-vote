@@ -59,7 +59,7 @@ export default function ModalCalc(props: ModalPropType) {
   const humanFreeBalance = accountBalance ? parseBN(accountBalance.freeBalance, tokenDecimals) : 0;
 
   if (priceError) {
-    return <div>Error fetching Polkadot price: {priceError.message}</div>;
+    return <div>Nem sikerült lekérni a Polkadot árát {priceError.message}</div>;
   }
 
   return (
@@ -75,7 +75,7 @@ export default function ModalCalc(props: ModalPropType) {
           {activeAccount ? (
             <>
               <span className="text-xs text-gray-300">
-                {humanFreeBalance.toFixed(2)} {tokenSymbol} available
+                {humanFreeBalance.toFixed(2)} {tokenSymbol} elérhető
                 {price && ` - Polkadot Price: $${price.toFixed(2)}`}
               </span>
             </>

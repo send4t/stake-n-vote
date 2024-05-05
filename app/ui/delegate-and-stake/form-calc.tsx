@@ -78,30 +78,31 @@ export default function StakingRewardCalculator() {
       : `${amount.toFixed(4)} DOT`;
   };
 
+
   return (
     <div className="flex flex-col gap-4">
+       <Button onClick={() => accountBalance && setStakeAmount(parseBN(accountBalance.freeBalance, tokenDecimals))}>
+         Összes elérhető DOT stake-elése
+        </Button>
       <div className="flex gap-2">
         <Input
-          label="Stake Amount (DOT)"
+          label="Stake-be helyezett mennyiség (DOT)"
           type="number"
-          placeholder="Enter amount"
+          placeholder="Írd be mennyit szeretnél stake-be helyezni"
           value={stakeAmount.toString()}
           onChange={(e) => setStakeAmount(Number(e.target.value))}
           fullWidth
         />
-        <Button onClick={() => accountBalance && setStakeAmount(parseBN(accountBalance.freeBalance, tokenDecimals))}>
-          Use Max
-        </Button>
       </div>
 
       <Switch checked={isCompounding} onChange={(e) => setIsCompounding(e.target.checked)}>
-        Enable Compounding (Autocompound every 4 hours)
+       Automatikus újra stake-elés (kamatos kamat 4 óránként újraszámolva)
       </Switch>
 
       <div className="flex flex-col gap-2">
-        <div>Rewards after 1 day: {formatCurrency(rewards.daily, 'DOT')} / {formatCurrency(rewards.daily, 'USD')}</div>
-        <div>Rewards after 1 month: {formatCurrency(rewards.monthly, 'DOT')} / {formatCurrency(rewards.monthly, 'USD')}</div>
-        <div>Rewards after 1 year: {formatCurrency(rewards.yearly, 'DOT')} / {formatCurrency(rewards.yearly, 'USD')}</div>
+        <div>Jutalmak 1 nap után: {formatCurrency(rewards.daily, 'DOT')} / {formatCurrency(rewards.daily, 'USD')}</div>
+        <div>Jutalmak 1 hónap után: {formatCurrency(rewards.monthly, 'DOT')} / {formatCurrency(rewards.monthly, 'USD')}</div>
+        <div>Jutalmak 1 év után: {formatCurrency(rewards.yearly, 'DOT')} / {formatCurrency(rewards.yearly, 'USD')}</div>
       </div>
     </div>
   );
