@@ -32,12 +32,14 @@ export default function RootLayout({
           <div className="relative flex flex-col min-h-[100vh]">
             <header className="h-24">
               <nav className="flex fixed w-full top-0 h-24 p-4 justify-between">
-                <Image
-                  src="logo_PHC.svg"
-                  alt="Polkadot Hungary logo"
-                  width={270}
-                  height={120}
-                />
+              <div className="relative w-[276px] h-[93.75px]"> {/* Container to maintain aspect ratio */}
+                  <Image
+                    src="/logoPHC.png"
+                    alt="Polkadot Hungary logo"
+                    layout="fill"
+                    objectFit="contain" // Ensure the image maintains its aspect ratio
+                  />
+                </div>
                 <ConnectButton />
               </nav>
             </header>
