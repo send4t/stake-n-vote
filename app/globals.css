@@ -22,7 +22,7 @@ html, body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(90deg,#037074 20%,#6b6b6b 100%)
+  background: linear-gradient(140deg,#e8e9df 10%,#037074 70%)
 }
 
 section[role="dialog"] button {

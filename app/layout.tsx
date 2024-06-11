@@ -32,12 +32,12 @@ export default function RootLayout({
           <div className="relative flex flex-col min-h-[100vh]">
             <header className="h-24">
               <nav className="flex fixed w-full top-0 h-24 p-4 justify-between">
-              <div className="relative w-[276px] h-[93.75px]"> {/* Container to maintain aspect ratio */}
+              <div className="relative w-[276px] h-[93.75px]"> 
                   <Image
                     src="/logoPHC.png"
                     alt="Polkadot Hungary logo"
                     layout="fill"
-                    objectFit="contain" // Ensure the image maintains its aspect ratio
+                    objectFit="contain" 
                   />
                 </div>
                 <ConnectButton />
@@ -47,21 +47,6 @@ export default function RootLayout({
               {children}
             </main>
             <footer className="fixed bottom-0 flex max-w-7xl mx-auto h-16 p-4 w-full text-xs items-center gap-2">
-              {/* <Link
-                href="https://github.com/TheKusamarian/stake-n-vote"
-                target="_blank"
-              >
-                {" "}
-                <GithubIcon size={28} />
-              </Link>
-              <Link
-                href="https://www.youtube.com/channel/UCqNw3CEyOD-bjjYYaxVyG3Q
-                "
-                target="_blank"
-                className="pl-2"
-              >
-                <Youtube size={32} />
-               </Link> */}
                <Link href="https://polkadothungary.net
                 ">
               <Button variant="bordered"

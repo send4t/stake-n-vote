@@ -205,59 +205,6 @@ export default function ModalStake(props: ModalPropType) {
                   </p>
                 </>
               )}
-              {showSupported && (
-                <div className="flex items-center justify-end text-xs h-5 text-gray-200">
-                  támogatva {" "}
-                  {activeChain === polkadotRelay && (
-                    <a
-                      className="pl-1"
-                      href="https://twitter.com/dev1_sik"
-                      target="_blank"
-                    >
-                      <Image
-                        src="sik.png"
-                        alt="sik staking"
-                        width={35}
-                        height={35}
-                      />
-                    </a>
-                  )}
-                  {amountSmallerThanMinNominatorBond &&
-                  nominators?.length === 0 &&
-                  activeChain === polkadotRelay &&
-                  stakeAmount ? (
-                    <>
-                      <span className="px-1">+</span>
-                      <a href="https://talisman.xyz" target="_blank">
-                        <Image
-                          src="talisman.svg"
-                          alt="talisman nomination pool"
-                          width={90}
-                          height={35}
-                          className="invert pl-2"
-                        />
-                      </a>
-                    </>
-                  ) : (
-                    <>
-                      {activeChain === kusamaRelay && (
-                        <a
-                          href="https://twitter.com/LuckyFridayLabs"
-                          target="_blank"
-                        >
-                          <Image
-                            src="lucky.png"
-                            alt="lucky friday staking"
-                            width={40}
-                            height={45}
-                            className="pl-2"
-                          />
-                        </a>
-                      )}
-                    </>
-                  )}
-                </div>
-              )}
             </ModalBody>
           </>
         )}
@@ -440,8 +387,8 @@ function MaybeAddToPool({
       {amountSmallerThanMinNominatorBond && kusamaRelay ? (
         <>
           <Tooltip
-            content={`Stakes under ${humanReadableMinNominatorBond} ${tokenSymbol}
-            stake do not have voting power while in nomination pools`}
+            content={`A ${humanReadableMinNominatorBond} ${tokenSymbol}
+            alatti stake-ek nem rendelkeznek szavazati erővel(ettől még stake-elhetsz)`}
             size="sm"
             color="warning"
             radius="sm"

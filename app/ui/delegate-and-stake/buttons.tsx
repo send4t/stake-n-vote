@@ -45,7 +45,7 @@ export function DelegateStakeButtons() {
       category: "Modal",
       label: "calc modal opened",
     });
-    activeAccount ? onCalcOpenChange() : openExtensionModal();
+    onCalcOpenChange(); // Always open the calculation modal
   };
 
   return (

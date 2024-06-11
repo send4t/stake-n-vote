@@ -19,8 +19,6 @@ import { useInkathon } from "@scio-labs/use-inkathon";
 
 type ModalPropType = Omit<ModalProps, "children">;
 
-
-
 export function usePolkadotPrice() {
   const [price, setPrice] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
@@ -72,31 +70,26 @@ export default function ModalCalc(props: ModalPropType) {
     >
       <ModalContent>
         <ModalHeader className="flex flex-col gap-1">
-          {activeAccount ? (
-            <>
-              <span className="text-xs text-gray-300">
+          <span className="text-xs text-gray-300">
+            {activeAccount ? (
+              <>
                 {humanFreeBalance.toFixed(2)} {tokenSymbol} elérhető
                 {price && ` - Polkadot Price: $${price.toFixed(2)}`}
-              </span>
-            </>
-          ) : (
-            <NotConnected />
-          )}
+              </>
+            ) : (
+              'Ha csatlakoztatod a tárcád, látni fogod mennyi DOT-ot stake-elhetsz'
+            )}
+          </span>
         </ModalHeader>
         <ModalBody className="text-sm mb-4">
-          {activeAccount ? (
-            <>
-              <StakingRewardCalculator />
-              <p className="my-2 text-center text-xs">
-               Csatlakozz hozzánk és formáld velünk a Polkadot-ot! <br />
-                <a className="underline" href="https://t.me/polkadothungary" target="_blank" rel="noopener noreferrer">
-                  Telegram csatornánk
-                </a>
-              </p>
-            </>
-          ) : (
-            <NotConnected />
-          )}
+          <StakingRewardCalculator />
+          <p className="my-2 text-center text-xs">
+            Csatlakozz hozzánk és formáld velünk a Polkadot-ot! <br />
+            <a className="underline" href="https://t.me/polkadothungary" target="_blank" rel="noopener noreferrer">
+              Telegram csatornánk
+            </a>
+          </p>
+          { !activeAccount}
         </ModalBody>
       </ModalContent>
     </Modal>
