@@ -123,7 +123,7 @@ export const ConnectButton: FC<ConnectButtonProps> = ({ size }) => {
                     className="hover:bg-transparent data-[hover=true]:border-white hover:border-white"
                   >
                     <Link href={w.urls.website}>
-                      <div className="align-center flex justify-start gap-2 text-white">
+                      <div className="opacity-70 align-center flex justify-start gap-2 text-white">
                         <p>{w.name}</p>
                         <ArrowUpRight />
                       </div>
