@@ -22,7 +22,7 @@ export function ModalInstallExtension(props: ModalPropType) {
       <ModalContent>
         {(onClose) => (
           <>
-            <ModalHeader className="flex flex-col gap-1 text-white">
+            <ModalHeader className="flex flex-col gap-1">
               Telepíts egy kompatibilis pénztárcát
             </ModalHeader>
             <ModalBody className="text-sm mb-4">
