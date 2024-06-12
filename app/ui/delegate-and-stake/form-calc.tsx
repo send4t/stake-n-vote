@@ -99,7 +99,7 @@ export default function StakingRewardCalculator() {
        Automatikus újra stake-elés (kamatos kamat 4 óránként újraszámolva)
       </Switch>
 
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 text-white">
         <div>Jutalmak 1 nap után: {formatCurrency(rewards.daily, 'DOT')} / {formatCurrency(rewards.daily, 'USD')}</div>
         <div>Jutalmak 1 hónap után: {formatCurrency(rewards.monthly, 'DOT')} / {formatCurrency(rewards.monthly, 'USD')}</div>
         <div>Jutalmak 1 év után: {formatCurrency(rewards.yearly, 'DOT')} / {formatCurrency(rewards.yearly, 'USD')}</div>
