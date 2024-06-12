@@ -126,8 +126,8 @@ export const ConnectButton: FC<ConnectButtonProps> = ({ size }) => {
                       <div className="align-center flex justify-start gap-2 text-white">
                         <p>{w.name}</p>
                         <ArrowUpRight />
+                        <p>Nincs telepítve</p>
                       </div>
-                      <p>Nincs telepítve</p>
                     </Link>
                   </DropdownItem>
                 )
