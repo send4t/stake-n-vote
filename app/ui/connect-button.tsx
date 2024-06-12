@@ -120,13 +120,15 @@ export const ConnectButton: FC<ConnectButtonProps> = ({ size }) => {
                 ) : (
                   <DropdownItem
                     key={w.id}
-                    className="opacity-50 hover:bg-transparent data-[hover=true]:border-white hover:border-white"
+                    className="hover:bg-transparent data-[hover=true]:border-white hover:border-white"
                   >
                     <Link href={w.urls.website}>
                       <div className="align-center flex justify-start gap-2 text-white">
                         <p>{w.name}</p>
                         <ArrowUpRight />
-                        <p>Nincs telepítve</p>
+                      </div>
+                      <div className="text-white">
+                      <p>Nincs telepítve</p>
                       </div>
                     </Link>
                   </DropdownItem>
