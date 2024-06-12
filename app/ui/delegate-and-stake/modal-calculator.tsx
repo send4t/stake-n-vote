@@ -81,7 +81,7 @@ export default function ModalCalc(props: ModalPropType) {
             )}
           </span>
         </ModalHeader>
-        <ModalBody className="text-sm mb-4">
+        <ModalBody className="text-sm mb-4 text-white">
           <StakingRewardCalculator />
           <p className="my-2 text-center text-xs">
             Csatlakozz hozzánk és formáld velünk a Polkadot-ot! <br />
