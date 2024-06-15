@@ -34,7 +34,7 @@ export default function RootLayout({
               <nav className="flex fixed w-full top-0 h-24 p-4 justify-between">
               <div className="relative w-[276px] h-[93.75px]"> 
                   <Image
-                    src="/logoPHC.png"
+                    src="/polkadotHU.png"
                     alt="Polkadot Hungary logo"
                     layout="fill"
                     objectFit="contain" 

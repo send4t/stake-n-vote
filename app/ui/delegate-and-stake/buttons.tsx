@@ -6,6 +6,7 @@ import { useDisclosure } from "@nextui-org/modal";
 import ModalDelegate from "./modal-delegate";
 import ModalStake from "./modal-stake";
 import ModalCalc from "./modal-calculator"
+import ModalMyStake from "./modal-mystake";
 import { event } from "nextjs-google-analytics";
 import { useInkathon } from "@scio-labs/use-inkathon";
 import { useApp } from "@/app/providers/app-provider";
@@ -22,6 +23,8 @@ export function DelegateStakeButtons() {
     useDisclosure();
   const { isOpen: isDelegatingOpen, onOpenChange: onDelegatingOpenChange } =
     useDisclosure();
+  const { isOpen: isMyStakingOpen, onOpenChange: onMyStakingOpenChange } =
+    useDisclosure();  
   const { activeChain, isConnecting, activeAccount } = useInkathon();
 
   const handleStakingOpen = () => {
@@ -30,6 +33,14 @@ export function DelegateStakeButtons() {
       label: "staking modal opened",
     });
     activeAccount ? onStakingOpenChange() : openExtensionModal();
+  };
+
+  const handleMyStakingOpen = () => {
+    event("staking_open", {
+      category: "Modal",
+      label: "staking modal opened",
+    });
+    activeAccount ? onMyStakingOpenChange() : openExtensionModal();
   };
 
   const handleDelegatingOpen = () => {
@@ -61,6 +72,18 @@ export function DelegateStakeButtons() {
       >
         {/* @ts-ignore */}
         {activeChain?.tokenSymbol} Stake-elés
+      </Button>
+      <Button
+        variant="bordered"
+        className={
+          "border-2 border-white text-white w-full shadow-xl text-base py-6 rounded-xl hover:bg-white/10"
+        }
+        size="sm"
+        onClick={handleMyStakingOpen}
+        isLoading={isConnecting}
+      >
+        {/* @ts-ignore */}
+         Aktív stake-jeim
       </Button>
       <Button
         variant="bordered"
@@ -100,6 +123,13 @@ export function DelegateStakeButtons() {
         <ModalStake
           isOpen={isStakingOpen}
           onOpenChange={onStakingOpenChange}
+          onDelegatingOpenChange={onDelegatingOpenChange}
+        />
+      )}
+      {isMyStakingOpen && (
+        <ModalMyStake
+          isOpen={isMyStakingOpen}
+          onOpenChange={onMyStakingOpenChange}
           onDelegatingOpenChange={onDelegatingOpenChange}
         />
       )}
