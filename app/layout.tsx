@@ -2,14 +2,13 @@ import type { Metadata } from "next";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import Image from "next/image";
-import { Button, ButtonGroup } from "@nextui-org/button";
+import { Button } from "@nextui-org/button";
 import "@polkadot/api-augment";
 import { Providers } from "./providers";
-import { inter, notoSansMono, pt_mono } from "./fonts";
+import { unbounded } from "./fonts"; // Import the unbounded font
 import Link from "next/link";
-import { DiscordIcon, GithubIcon, XIcon } from "./ui/icons";
+import { XIcon } from "./ui/icons";
 import Script from "next/script";
-import { Youtube } from "lucide-react";
 import { ConnectButton } from "./ui/connect-button";
 
 export const revalidate = 60;
@@ -27,12 +26,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${notoSansMono.className}`}>
+      <body className={unbounded.className}> {/* Use the unbounded className */}
         <Providers>
           <div className="relative flex flex-col min-h-[100vh]">
             <header className="h-24">
               <nav className="flex fixed w-full top-0 h-24 p-4 justify-between">
-              <div className="relative w-[276px] h-[93.75px]"> 
+                <div className="relative w-[276px] h-[93.75px]"> 
                   <Image
                     src="/polkadotHU.png"
                     alt="Polkadot Hungary logo"
@@ -47,17 +46,15 @@ export default function RootLayout({
               {children}
             </main>
             <footer className="fixed bottom-0 flex max-w-7xl mx-auto h-16 p-4 w-full text-xs items-center gap-2">
-               <Link href="https://polkadothungary.net
-                ">
-              <Button variant="bordered"
-                        className={"border-2 border-white text-white  shadow-xl text-base py-6 rounded-xl hover:bg-white/10"}
+              <Link href="https://polkadothungary.net">
+                <Button variant="bordered"
+                        className={"border-2 border-white text-white shadow-xl text-base py-6 rounded-xl hover:bg-white/10"}
                         size="sm">
-                          Blog
-              </Button>
+                  Blog
+                </Button>
               </Link>
               <Link
-                href="https://twitter.com/polkadothungary
-                "
+                href="https://twitter.com/polkadothungary"
                 target="_blank"
                 className="pl-2"
               >
@@ -70,16 +67,13 @@ export default function RootLayout({
             reverseOrder={false}
             gutter={8}
             containerClassName=""
-            containerStyle={{}}
+            containerStyle={{ }}
             toastOptions={{
-              // Define default options
               className: "",
               style: {
                 background: "#363636",
                 color: "#fff",
               },
-
-              // Default options for specific types
               success: {
                 duration: 4000,
                 iconTheme: {
@@ -96,7 +90,7 @@ export default function RootLayout({
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
- 
+
           gtag('config', 'G-FNKNFVZVCN');
         `}
         </Script>

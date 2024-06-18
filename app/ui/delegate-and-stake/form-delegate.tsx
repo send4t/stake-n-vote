@@ -4,6 +4,7 @@ import { Select, SelectItem } from "@nextui-org/select";
 import { Input } from "@nextui-org/input";
 import { Slider } from "@nextui-org/slider";
 import { Button } from "@nextui-org/button";
+import { Tooltip } from "@nextui-org/tooltip";
 import { useState } from "react";
 import { sendDelegateTx } from "@/app/txs/txs";
 import { BN_ZERO, bnToBn } from "@polkadot/util";
@@ -19,6 +20,7 @@ import { KusamaIcon, PolkadotIcon } from "../icons";
 import { Switch } from "@nextui-org/switch";
 import { useInkathon } from "@scio-labs/use-inkathon";
 import { kusamaRelay } from "@/app/lib/chains";
+import { FaInfoCircle } from "react-icons/fa";
 
 const ALL_TRACKS_ID = 9999;
 
@@ -82,8 +84,6 @@ export default function FormDelegate() {
       tracksArray = ALL_TRACKS;
     }
 
-    // setTracks(new Set([ALL_TRACKS_ID.toString()]));
-
     const tx = await sendDelegateTx(
       api,
       activeSigner,
@@ -140,15 +140,12 @@ export default function FormDelegate() {
 
     if (changedItem.includes(ALL_TRACKS_ID.toString())) {
       if (selectedTracks.has(ALL_TRACKS_ID.toString())) {
-        // If ALL_TRACKS_ID was selected, set tracks to only contain ALL_TRACKS_ID
         setTracks(new Set([ALL_TRACKS_ID.toString()]));
       } else {
-        // If ALL_TRACKS_ID was deselected, remove it and keep the other tracks
         selectedTracks.delete(ALL_TRACKS_ID.toString());
         setTracks(new Set(selectedTracks));
       }
     } else {
-      // For other tracks, if ALL_TRACKS_ID is in the set and more tracks are selected, remove ALL_TRACKS_ID
       if (
         selectedTracks.has(ALL_TRACKS_ID.toString()) &&
         selectedTracks.size > 1
@@ -170,36 +167,44 @@ export default function FormDelegate() {
 
   return (
     <form className="flex flex-col gap-5 text-white">
-      <div className="flex flex-col gap-2">
+      <div className="flex items-center gap-2">
         <Switch
           isSelected={isAllSelected}
           onValueChange={setIsAllSelected}
           color="danger"
         >
-          Összes téma
+          Összes témakör
         </Switch>
-        {!isAllSelected && (
-          <Select
-            label="Tracks"
-            placeholder="Válaszd ki a témakört"
-            selectionMode="multiple"
-            size="sm"
-            classNames={{ description: "text-foreground-600" }}
-            description="Válaszd ki milyen témakörben delegálsz"
-            selectedKeys={tracks}
-            // @ts-ignore
-            onSelectionChange={handleSelectionChange}
-          >
-            {trackOptionsWithAll.map((track) => {
-              return (
-                <SelectItem key={track.id} value={track.id}>
-                  {track.name}
-                </SelectItem>
-              );
-            })}
-          </Select>
-        )}
+        <Tooltip
+          content="A témakörök különböző döntéshozatali területek, amelyekben delegálhatod a szavazati jogaidat."
+          color="primary"
+        >
+          <span>
+            <FaInfoCircle size={18} />
+          </span>
+        </Tooltip>
       </div>
+      {!isAllSelected && (
+        <Select
+          label="Tracks"
+          placeholder="Válaszd ki a témakört"
+          selectionMode="multiple"
+          size="sm"
+          classNames={{ description: "text-foreground-600" }}
+          description="Válaszd ki milyen témakörben delegálsz"
+          selectedKeys={tracks}
+          // @ts-ignore
+          onSelectionChange={handleSelectionChange}
+        >
+          {trackOptionsWithAll.map((track) => {
+            return (
+              <SelectItem key={track.id} value={track.id}>
+                {track.name}
+              </SelectItem>
+            );
+          })}
+        </Select>
+      )}
 
       <div className="flex flex-row gap-3 w-full max-w-full">
         <div className="flex gap-2 w-full">
@@ -259,7 +264,8 @@ export default function FormDelegate() {
           onClick={delegateToTheKus}
           isDisabled={!isAccountBalanceSuccess}
         >
-          Delegálok {effectiveVotes} {effectiveVotes !== 1 ? "szavazatot" : "szavazatot"}
+          Delegálok {effectiveVotes}{" "}
+          {effectiveVotes !== 1 ? "szavazatot" : "szavazatot"}
         </Button>
       </div>
     </form>

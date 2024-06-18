@@ -4,7 +4,7 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start:#105b5d;
+  --background-start: #105b5d;
   --background-end: #9a1c54;
 }
 
@@ -22,7 +22,7 @@ html, body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(140deg,#e8e9df 1%,#037074 70%)
+  background: linear-gradient(140deg, #1E0107 1%, #7B014E 70%);
 }
 
 section[role="dialog"] button {
@@ -30,7 +30,6 @@ section[role="dialog"] button {
   border: 2px solid transparent;
 
   &:hover {
-    /* background: transparent; */
     border: 2px solid white;
   }
 
