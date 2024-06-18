@@ -177,7 +177,7 @@ export default function FormDelegate() {
         </Switch>
         <Tooltip
           content="A témakörök különböző döntéshozatali területek, amelyekben delegálhatod a szavazati jogaidat."
-          color="primary"
+          color="danger"
         >
           <span>
             <FaInfoCircle size={18} />

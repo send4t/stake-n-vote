@@ -81,7 +81,7 @@ export default function StakingRewardCalculator() {
 
   return (
     <div className="flex flex-col gap-4">
-       <Button onClick={() => accountBalance && setStakeAmount(parseBN(accountBalance.freeBalance, tokenDecimals))}>
+       <Button color="danger" onClick={() => accountBalance && setStakeAmount(parseBN(accountBalance.freeBalance, tokenDecimals))}>
          Összes elérhető DOT stake-elése
         </Button>
       <div className="flex gap-2">
@@ -95,7 +95,7 @@ export default function StakingRewardCalculator() {
         />
       </div>
 
-      <Switch checked={isCompounding} onChange={(e) => setIsCompounding(e.target.checked)}>
+      <Switch color="danger" checked={isCompounding} onChange={(e) => setIsCompounding(e.target.checked)}>
        Automatikus újra stake-elés (kamatos kamat 4 óránként újraszámolva)
       </Switch>
 
