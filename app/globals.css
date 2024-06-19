@@ -42,3 +42,28 @@ section[role="dialog"] button {
 label.group > span {
   border-color: white;
 }
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo-container {
+  width: 276px;
+  height: 93.75px;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .logo-container {
+    width: 130px; 
+    height: auto; 
+    top: 5px;
+    left: 5px; 
+  }
+}
+
+.main-content {
+  padding-top: 6rem; /* Adjust based on your header height to prevent overlap */
+}

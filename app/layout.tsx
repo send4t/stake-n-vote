@@ -19,19 +19,15 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://polkadothungary.net"),
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={unbounded.className}> 
+      <body className={unbounded.className}> {/* Use the unbounded className */}
         <Providers>
           <div className="relative flex flex-col min-h-[100vh]">
-            <header className="h-24">
+            <header className="header h-24">
               <nav className="flex fixed w-full top-0 h-24 p-4 justify-between">
-                <div className="relative w-[276px] h-[93.75px]"> 
+                <div className="logo-container"> 
                   <Image
                     src="/polkadotHU.png"
                     alt="Polkadot Hungary logo"
@@ -42,7 +38,7 @@ export default function RootLayout({
                 <ConnectButton />
               </nav>
             </header>
-            <main className="flex max-w-7xl mx-auto p-4 flex-grow w-full">
+            <main className="main-content flex max-w-7xl mx-auto p-4 flex-grow w-full">
               {children}
             </main>
             <footer className="fixed bottom-0 flex max-w-7xl mx-auto h-16 p-4 w-full text-xs items-center gap-2">
