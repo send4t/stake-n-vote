@@ -68,7 +68,7 @@ export default function ModalStake(props: ModalPropType) {
       <ModalContent className={styles.modal}>
         {(onClose) => (
           <>
-            <ModalHeader className="flex flex-col gap-1">
+            <ModalHeader className="flex flex-col text-white gap-1">
               {activeAccount ? (
                 <>
                   Jelenleg itt van aktív {tokenSymbol}  stake-ed {" "}

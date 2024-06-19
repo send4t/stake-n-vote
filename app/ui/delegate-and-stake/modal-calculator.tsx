@@ -69,7 +69,7 @@ export default function ModalCalc(props: ModalPropType) {
       scrollBehavior="inside"
     >
       <ModalContent>
-        <ModalHeader className="flex flex-col gap-1">
+        <ModalHeader className="flex text-white flex-col gap-1">
           <span className="text-xs text-gray-300">
             {activeAccount ? (
               <>

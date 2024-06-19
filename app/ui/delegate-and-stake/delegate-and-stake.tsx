@@ -8,7 +8,7 @@ export function DelegateAndStake() {
     <>
       {" "}
       <div className="max-w-xl mt-[10vh] mb-[10vh]">
-        <h2 className={`text-center mb-12 text-xl font-bold`}>
+        <h2 className={`text-center text-white mb-12 text-xl font-bold`}>
           DOT tokenedet stake-eld a Polkadot Hungary-vel!
         </h2>
         <ChainSwitch />

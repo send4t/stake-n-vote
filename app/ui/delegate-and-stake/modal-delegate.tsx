@@ -46,7 +46,7 @@ export default function ModalDelegate(props: ModalPropType) {
       <ModalContent className={styles.modal}>
         {(onClose) => (
           <>
-            <ModalHeader className="flex flex-col gap-1">
+            <ModalHeader className="flex text-white flex-col gap-1">
               {activeAccount ? (
                 <>
                   Delegálj szavazati erőt a Polkadot Hungary-nek {tokenSymbol} Delegálás

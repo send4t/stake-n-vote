@@ -109,7 +109,7 @@ export default function ModalStake(props: ModalPropType) {
       <ModalContent className={styles.modal}>
         {(onClose) => (
           <>
-            <ModalHeader className="flex flex-col gap-1">
+            <ModalHeader className="flex flex-col text-white gap-1">
               {activeAccount ? (
                 <>
                   Stake-elj {tokenSymbol} -ot a Polkadot Hungary-vel{" "}

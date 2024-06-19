@@ -22,14 +22,14 @@ export function usePolkadotPrice() {
   const fetchPrice = async () => {
     setLoading(true);
     try {
-      const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=polkadot&vs_currencies=usd');
+      const response = await fetch('@/app/pages/api/get-polkadot-price'); // Fetch from the serverless function
       const data = await response.json();
-      setPrice(data.polkadot.usd);
+      setPrice(data.price);
     } catch (err) {
       if (err instanceof Error) {
         setError(err);
       } else {
-        setError(new Error('An error occurred while fetching the Polkadot price'));
+        setError(new Error('Valami probléma lépett fel a Polkadot árfolyam lekérdezés közben'));
       }
     } finally {
       setLoading(false);
@@ -80,7 +80,7 @@ export default function StakingRewardCalculator() {
 
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col text-white gap-4">
        <Button color="danger" onClick={() => accountBalance && setStakeAmount(parseBN(accountBalance.freeBalance, tokenDecimals))}>
          Összes elérhető DOT stake-elése
         </Button>

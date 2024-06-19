@@ -26,7 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={unbounded.className}> {/* Use the unbounded className */}
+      <body className={unbounded.className}> 
         <Providers>
           <div className="relative flex flex-col min-h-[100vh]">
             <header className="h-24">
