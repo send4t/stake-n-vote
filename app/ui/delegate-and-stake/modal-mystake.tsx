@@ -27,7 +27,7 @@ export default function ModalStake(props: ModalPropType) {
   const { activeChain, activeAccount } = useInkathon();
 
   const {
-    data: stakingInfo = { nominators: [], pool: null }, // Add a default value to ensure stakingInfo is never undefined
+    data: stakingInfo = { nominators: [], pool: null, stakedAmount: BN_ZERO }, // Add default stakedAmount
     isLoading: isStakingInfoLoading,
     isFetching: isStakingInfoFetching,
   } = useAccountMyStakes();
@@ -44,17 +44,13 @@ export default function ModalStake(props: ModalPropType) {
   const { freeBalance } = accountBalance || { freeBalance: BN_ZERO };
   const humanFreeBalance = parseBN(freeBalance, tokenDecimals);
 
-  const [stakeAmount, setStakeAmount] = useState<number | undefined>();
-  const stakeBalance =
-    stakeAmount && !isNaN(stakeAmount) && stakeAmount !== 0
-      ? bnToBn(stakeAmount * Math.pow(10, tokenDecimals))
-      : BN_ZERO;
-
   const isLoading =
     isStakingInfoLoading ||
     isAccountBalanceLoading ||
     isStakingInfoFetching ||
     isAccountBalanceFetching;
+
+  const humanStakedAmount = parseBN(stakingInfo.stakedAmount, tokenDecimals);
 
   return (
     <Modal
@@ -71,10 +67,10 @@ export default function ModalStake(props: ModalPropType) {
             <ModalHeader className="flex flex-col text-white gap-1">
               {activeAccount ? (
                 <>
-                  Jelenleg itt van aktív {tokenSymbol}  stake-ed {" "}
                   <span className="text-xs text-gray-300">
-                    ({humanFreeBalance.toFixed(2)} {tokenSymbol} elérhető)
+                    (tárcádban szabadon elérhető: {humanFreeBalance.toFixed(2)} {tokenSymbol} token)
                   </span>
+                  Jelenleg itt van aktív {tokenSymbol} stake-ed{" "}:
                 </>
               ) : (
                 "Nem találom az account-ot"
@@ -99,34 +95,24 @@ export default function ModalStake(props: ModalPropType) {
                 <div>
                   {stakingInfo.nominators.length > 0 && (
                     <>
-                      <h3>Önálló stake:</h3>
-                      <ul>
-                        {stakingInfo.nominators.map((address) => (
-                          <li key={address}>
-                            <p>Cím: {trimAddress(address, 8)}</p>
-                            <Link
-                              href={`//${activeChain?.network}.subscan.io/account/${address}`}
-                              target="_blank"
-                              className="underline text-xs text-default-500"
-                            >
-                              👀 subscan ↗️
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </>
-                  )}
-                  {stakingInfo.pool && (
-                    <>
-                      <h3>Neked Pool-ban van DOT tokened</h3>
-                      <p>Egészen pontosan a {stakingInfo.pool} számú pool-ban</p>
-                      <Link
+                      <p>Jelenleg Polkadoton {humanStakedAmount.toFixed(2)} {tokenSymbol}-ot stakelsz natívan. Ha unstakelni szeretnéd a DOT-jaid, akkor látogassa el a <Link
                         href={`https://staking.polkadot.network`}
                         target="_blank"
                         className="underline text-xs text-default-500"
                       >
-                        Ha szeretnéd módosítani a hivatalos stake oldalt javasoljuk
-                      </Link>
+                        Polkadot Staking Dashboard
+                      </Link> oldalára.</p>
+                    </>
+                  )}
+                  {stakingInfo.pool && (
+                    <>
+                      <p>A "{stakingInfo.pool}" számú Nomination Pool-ban stakelsz jelenleg {humanStakedAmount.toFixed(2)} {tokenSymbol}-ot. Ha unstakelni szeretnéd a Pool-ból a DOT-jaid, akkor látogass el a <Link
+                        href={`https://staking.polkadot.network`}
+                        target="_blank"
+                        className="underline text-s "
+                      >
+                        Polkadot Staking Dashboard
+                      </Link> oldalára.</p>
                     </>
                   )}
                 </div>
