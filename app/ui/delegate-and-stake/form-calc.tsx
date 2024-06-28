@@ -1,8 +1,6 @@
-"use client";
-
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { BN_ZERO, bnToBn } from "@polkadot/util";
 import {
   CHAIN_CONFIG,
@@ -14,37 +12,7 @@ import useAccountBalances from "@/app/hooks/use-account-balance";
 import { Switch } from "@nextui-org/switch";
 import { useInkathon } from "@scio-labs/use-inkathon";
 
-export function usePolkadotPrice() {
-  const [price, setPrice] = useState<number | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<Error | null>(null);
-
-  const fetchPrice = async () => {
-    setLoading(true);
-    try {
-      const response = await fetch('@/app/pages/api/get-polkadot-price'); // Fetch from the serverless function
-      const data = await response.json();
-      setPrice(data.price);
-    } catch (err) {
-      if (err instanceof Error) {
-        setError(err);
-      } else {
-        setError(new Error('Valami probléma lépett fel a Polkadot árfolyam lekérdezés közben'));
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchPrice();
-  }, []);
-
-  return { price, loading, error, retry: fetchPrice };
-}
-
-export default function StakingRewardCalculator() {
-  const { price, loading: priceLoading } = usePolkadotPrice();
+export default function StakingRewardCalculator({ price }: { price: number | null }) {
   const { data: accountBalance } = useAccountBalances();
   const { activeChain } = useInkathon();
   const APY = 0.15; // 15% APY this should be coming from chain API
@@ -77,7 +45,6 @@ export default function StakingRewardCalculator() {
       ? `$${(amount * price).toFixed(2)}`
       : `${amount.toFixed(4)} DOT`;
   };
-
 
   return (
     <div className="flex flex-col text-white gap-4">

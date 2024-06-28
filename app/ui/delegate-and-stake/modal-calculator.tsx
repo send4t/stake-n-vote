@@ -74,7 +74,7 @@ export default function ModalCalc(props: ModalPropType) {
             {activeAccount ? (
               <>
                 {humanFreeBalance.toFixed(2)} {tokenSymbol} elérhető
-                {price && ` - Polkadot Price: $${price.toFixed(2)}`}
+                {price && ` - Polkadot ár: $${price.toFixed(2)}`}
               </>
             ) : (
               'Ha csatlakoztatod a tárcád, látni fogod mennyi DOT-ot stake-elhetsz'
@@ -82,7 +82,7 @@ export default function ModalCalc(props: ModalPropType) {
           </span>
         </ModalHeader>
         <ModalBody className="text-sm mb-4 text-white">
-          <StakingRewardCalculator />
+          <StakingRewardCalculator price={price} />
           <p className="my-2 text-center text-xs">
             Csatlakozz hozzánk és formáld velünk a Polkadot-ot! <br />
             <a className="underline" href="https://t.me/polkadothungary" target="_blank" rel="noopener noreferrer">

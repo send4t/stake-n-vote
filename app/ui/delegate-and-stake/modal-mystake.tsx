@@ -96,7 +96,7 @@ export default function ModalStake(props: ModalPropType) {
                   {stakingInfo.nominators.length > 0 && (
                     <>
                       <p>Jelenleg Polkadoton {humanStakedAmount.toFixed(2)} {tokenSymbol}-ot stakelsz natívan. Ha unstakelni szeretnéd a DOT-jaid, akkor látogass el a <Link
-                        href={`https://staking.polkadot.network`}
+                        href={`https://staking.polkadot.cloud`}
                         target="_blank"
                         className="underline text-s"
                       >
@@ -107,7 +107,7 @@ export default function ModalStake(props: ModalPropType) {
                   {stakingInfo.pool && (
                     <>
                       <p>A &quot;{stakingInfo.pool}&quot; számú Nomination Pool-ban stakelsz jelenleg {humanStakedAmount.toFixed(2)} {tokenSymbol}-ot. Ha unstakelni szeretnéd a Pool-ból a DOT-jaid, akkor látogass el a <Link
-                        href={`https://staking.polkadot.network`}
+                        href={`https://staking.polkadot.cloud`}
                         target="_blank"
                         className="underline text-s"
                       >
