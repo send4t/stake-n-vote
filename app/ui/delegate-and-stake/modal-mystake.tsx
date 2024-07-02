@@ -11,12 +11,13 @@ import { useAccountMyStakes } from "@/app/hooks/use-account-mystake";
 import { CHAIN_CONFIG } from "@/app/config";
 import useAccountBalances from "@/app/hooks/use-account-balance";
 import { useState } from "react";
-import { BN, BN_ZERO, bnToBn } from "@polkadot/util";
+import { BN, BN_ZERO } from "@polkadot/util";
 import { SubstrateChain, useInkathon } from "@scio-labs/use-inkathon";
 import { NotConnected } from "./not-connected";
 import { trimAddress } from "@/app/util";
 import Link from "next/link";
 import styles from "./modal.module.scss";
+import { useAddStake } from "@/app/hooks/use-addStake";
 
 type ModalPropType = Omit<ModalProps, "children"> & {
   onDelegatingOpenChange: () => void;
@@ -25,32 +26,23 @@ type ModalPropType = Omit<ModalProps, "children"> & {
 export default function ModalStake(props: ModalPropType) {
   const { isOpen, onOpenChange, onDelegatingOpenChange } = props;
   const { activeChain, activeAccount } = useInkathon();
-
-  const {
-    data: stakingInfo = { nominators: [], pool: null, stakedAmount: BN_ZERO }, // Add default stakedAmount
-    isLoading: isStakingInfoLoading,
-    isFetching: isStakingInfoFetching,
-  } = useAccountMyStakes();
-
-  const {
-    data: accountBalance,
-    isLoading: isAccountBalanceLoading,
-    isFetching: isAccountBalanceFetching,
-  } = useAccountBalances();
-
-  const { tokenSymbol, tokenDecimals } =
-    CHAIN_CONFIG[activeChain?.network || "Polkadot"] || {};
-
+  const { data: stakingInfo = { nominators: [], pool: null, stakedAmount: BN_ZERO }, isLoading: isStakingInfoLoading, isFetching: isStakingInfoFetching } = useAccountMyStakes();
+  const { data: accountBalance, isLoading: isAccountBalanceLoading, isFetching: isAccountBalanceFetching } = useAccountBalances();
+  const { tokenSymbol, tokenDecimals } = CHAIN_CONFIG[activeChain?.network || "Polkadot"] || {};
   const { freeBalance } = accountBalance || { freeBalance: BN_ZERO };
   const humanFreeBalance = parseBN(freeBalance, tokenDecimals);
 
-  const isLoading =
-    isStakingInfoLoading ||
-    isAccountBalanceLoading ||
-    isStakingInfoFetching ||
-    isAccountBalanceFetching;
+  const [additionalStake, setAdditionalStake] = useState("");
+  const { mutate: addStake, isLoading: isAddingStake } = useAddStake();
+
+  const isLoading = isStakingInfoLoading || isAccountBalanceLoading || isStakingInfoFetching || isAccountBalanceFetching;
 
   const humanStakedAmount = parseBN(stakingInfo.stakedAmount, tokenDecimals);
+
+  const handleAddStake = () => {
+    const amount = new BN(additionalStake).mul(new BN(Math.pow(10, tokenDecimals)));
+    addStake(amount);
+  };
 
   return (
     <Modal
@@ -88,8 +80,7 @@ export default function ModalStake(props: ModalPropType) {
                     <Button></Button>
                   </Skeleton>
                 </>
-              ) : stakingInfo.nominators.length === 0 &&
-                !stakingInfo.pool ? (
+              ) : stakingInfo.nominators.length === 0 && !stakingInfo.pool ? (
                 <p>Semmilyen validátornál nincs jelenleg Stake-ed</p>
               ) : (
                 <div>
@@ -113,6 +104,22 @@ export default function ModalStake(props: ModalPropType) {
                       >
                         Polkadot Staking Dashboard
                       </Link> oldalára.</p>
+                      <div className="flex flex-col text-white gap-4 mt-4">
+                        <input
+                          type="number"
+                          value={additionalStake}
+                          onChange={(e) => setAdditionalStake(e.target.value)}
+                          placeholder="Adj hozzá több DOT-ot"
+                          className="p-2 rounded border w-full"
+                        />
+                        <Button
+                          color="danger"
+                          onClick={handleAddStake}
+                          disabled={isAddingStake || !additionalStake}
+                        >
+                          {isAddingStake ? "Folyamatban.." : "DOT hozzáadás"}
+                        </Button>
+                      </div>
                     </>
                   )}
                 </div>
